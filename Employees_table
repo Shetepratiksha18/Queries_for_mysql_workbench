@@ -1,0 +1,55 @@
+-- Create a new database
+CREATE DATABASE company_db;
+
+-- Select the database
+USE company_db;
+
+-- Create table
+CREATE TABLE employees (
+    emp_id INT PRIMARY KEY,
+    emp_name VARCHAR(50),
+    email VARCHAR(100),
+    salary INT,
+    department VARCHAR(50)
+);
+
+-- Insert 5 sample records
+INSERT INTO employees (emp_id, emp_name, email, salary, department) VALUES
+(1, 'Rahul Sharma', 'rahul.sharma@example.com', 45000, 'IT'),
+(2, 'Priya Verma', 'priya.verma@example.com', 55000, 'HR'),
+(3, 'Amit Singh', 'amit.singh@example.com', 60000, 'Finance'),
+(4, 'Neha Gupta', 'neha.gupta@example.com', 48000, 'HR'),
+(5, 'Rohit Mehta', 'rohit.mehta@example.com', 70000, 'IT');
+
+-- Display all employees
+SELECT * FROM employees;
+
+-- Retrieve employees who belong to HR department
+SELECT * FROM employees
+WHERE department = 'HR';
+
+-- Find employees with salary greater than 50,000
+SELECT * FROM employees
+WHERE salary > 50000;
+
+-- Count employees in each department
+SELECT department, COUNT(*) AS total_employees
+FROM employees
+GROUP BY department;
+
+-- Update salary of emp_id = 2 to 60,000
+UPDATE employees
+SET salary = 60000
+WHERE emp_id = 2;
+
+-- Delete employee with emp_id = 5
+DELETE FROM employees
+WHERE emp_id = 5;
+
+-- Sort employees by salary in descending order
+SELECT * FROM employees
+ORDER BY salary DESC;
+
+-- Find highest salary among employees
+SELECT MAX(salary) AS highest_salary
+FROM employees;
